@@ -13,7 +13,7 @@ export const streamingLinks = {
 		app: "https://music.apple.com/us/album/a-ritmo-cha-cun-cha-feat-subcantante-single/1886347025",
 	},
 	tidal: {
-		web: "https://tidal.com/track/508002732/u",
+		web: "https://tidal.com/album/508002731/track/508002732",
 		app: "tidal://track/508002732",
 	},
 	youtube: {
