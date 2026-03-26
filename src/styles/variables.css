@@ -1,0 +1,51 @@
+/**
+ * Design tokens — JONNYMAD
+ * Neón solo como acento; máximo 2 neones simultáneos en textos.
+ */
+:root {
+	/* Primario / secundario (acentos) */
+	--color-primary: #66ff33;
+	--color-secondary: #ff00ff;
+
+	/* Complementarios (acentos) */
+	--color-yellow: #ffff33;
+	--color-blue: #33ccff;
+
+	/* Base */
+	--color-black: #000000;
+	--color-white: #EEE6DB;
+
+	/* Superficies (alto contraste sobre negro) */
+	--color-bg: var(--color-black);
+	--color-surface: #0a0a0a;
+	--color-text: var(--color-white);
+	--color-text-muted: #b3b3b3;
+
+	/* Tipografía */
+	--font-sans: Futura, "Futura PT", "Century Gothic", Arial, sans-serif;
+
+	/* Espaciado */
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+	--space-2xl: 3rem;
+	--space-3xl: 4rem;
+
+	/* Layout */
+	--container-max: 72rem;
+	--header-height: 4rem;
+
+	/* Bordes */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+
+	/* Transiciones — base para animaciones futuras */
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--duration-fast: 150ms;
+	--duration-base: 220ms;
+	--transition-color: color var(--duration-base) var(--ease-out);
+	--transition-opacity: opacity var(--duration-base) var(--ease-out);
+	--transition-transform: transform var(--duration-base) var(--ease-out);
+}

@@ -1,0 +1,140 @@
+---
+import styles from "../../pages/madsession/a-ritmo-cha-cun-cha.module.css";
+import { streamingLinks } from "../../data/streamingLinks";
+
+const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
+---
+
+<section class={styles.platforms} aria-labelledby="platforms-heading">
+	<h3 id="platforms-heading" class={styles.platformsTitle}>Select your platform</h3>
+	<div class={styles.platformGrid} data-streaming-grid>
+		<a
+			class={styles.platformCard}
+			href={spotify.web}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-platform="spotify"
+			data-web-href={spotify.web}
+			data-app-href={spotify.app}
+		>
+			<div class={styles.platformIcon}>
+				<img
+					src="/assets/images/spotify-icon.webp"
+					alt=""
+					width="48"
+					height="48"
+					loading="lazy"
+				/>
+			</div>
+			<span class={styles.platformName}>Spotify</span>
+		</a>
+		<a
+			class={styles.platformCard}
+			href={apple.web}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-platform="apple"
+			data-web-href={apple.web}
+			data-app-href={apple.app}
+		>
+			<div class={styles.platformIcon}>
+				<img
+					src="/assets/images/apple-music.webp"
+					alt=""
+					width="48"
+					height="48"
+					loading="lazy"
+				/>
+			</div>
+			<span class={styles.platformName}>Apple Music</span>
+		</a>
+		<a
+			class={styles.platformCard}
+			href={tidal.web}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-platform="tidal"
+			data-web-href={tidal.web}
+			data-app-href={tidal.app}
+		>
+			<div class={styles.platformIcon}>
+				<img
+					src="/assets/images/tidal-music.webp"
+					alt=""
+					width="48"
+					height="48"
+					loading="lazy"
+				/>
+			</div>
+			<span class={styles.platformName}>Tidal</span>
+		</a>
+		<a
+			class={styles.platformCard}
+			href={youtube.web}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-platform="youtube"
+			data-web-href={youtube.web}
+			data-app-href={youtube.app}
+		>
+			<div class={styles.platformIcon}>
+				<img
+					src="/assets/images/youtube-music.webp"
+					alt=""
+					width="48"
+					height="48"
+					loading="lazy"
+				/>
+			</div>
+			<span class={styles.platformName}>YouTube Music</span>
+		</a>
+		<a
+			class={styles.platformCard}
+			href={amazon.web}
+			target="_blank"
+			rel="noopener noreferrer"
+			data-platform="amazon"
+			data-web-href={amazon.web}
+		>
+			<div class={styles.platformIcon}>
+				<img
+					src="/assets/images/amazon-music.webp"
+					alt=""
+					width="48"
+					height="48"
+					loading="lazy"
+				/>
+			</div>
+			<span class={styles.platformName}>Amazon</span>
+		</a>
+	</div>
+</section>
+
+<script>
+	function applyMobileStreamingLinks() {
+		const grid = document.querySelector("[data-streaming-grid]");
+		if (!grid) return;
+
+		const mobile = window.matchMedia("(max-width: 47.99em)").matches;
+		const links = grid.querySelectorAll("a[data-web-href]");
+
+		links.forEach((a) => {
+			const web = a.dataset.webHref ?? "";
+			const app = a.dataset.appHref?.trim();
+
+			if (mobile && app && app !== web) {
+				a.href = app;
+				a.removeAttribute("target");
+				a.removeAttribute("rel");
+				return;
+			}
+
+			a.href = web;
+			a.target = "_blank";
+			a.rel = "noopener noreferrer";
+		});
+	}
+
+	applyMobileStreamingLinks();
+	window.matchMedia("(max-width: 47.99em)").addEventListener("change", applyMobileStreamingLinks);
+</script>

@@ -1,0 +1,52 @@
+---
+import "../styles/globals.css";
+import "../styles/madsession.css";
+import Header from "../components/layout/Header.astro";
+import MadSessionFooter from "../components/madsession/MadSessionFooter.astro";
+import HeadIdentity from "../components/HeadIdentity.astro";
+import styles from "./MadSessionLayout.module.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: string;
+	/** Por defecto true. En home se puede ocultar temporalmente. */
+	showHeader?: boolean;
+}
+
+const {
+	title = "JONNY MAD | MAD SESSIONS #1",
+	description = "MAD SESSIONS #1 — JONNY MAD feat. Subcantante",
+	lang = "en",
+	showHeader = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class:list={[styles.html, "madSessionRoot"]}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<HeadIdentity />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class:list={[styles.body, "madSessionRoot"]}>
+		<div class={styles.backdrop} aria-hidden="true">
+			<div class={styles.glowPrimary}></div>
+			<div class={styles.glowSecondary}></div>
+		</div>
+		{showHeader ? <Header /> : null}
+		<main id="main-content" class={styles.main}>
+			<slot />
+		</main>
+		<MadSessionFooter />
+	</body>
+</html>

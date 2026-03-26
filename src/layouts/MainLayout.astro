@@ -1,0 +1,35 @@
+---
+import "../styles/globals.css";
+import Header from "../components/layout/Header.astro";
+import HeadIdentity from "../components/HeadIdentity.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: string;
+}
+
+const {
+	title = "JONNYMAD",
+	description = "Sitio oficial de JONNYMAD",
+	lang = "es",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<HeadIdentity />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<slot />
+		</main>
+	</body>
+</html>

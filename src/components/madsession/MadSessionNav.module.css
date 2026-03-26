@@ -1,0 +1,59 @@
+.bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+.inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 80rem;
+	margin-inline: auto;
+	padding: var(--space-md) var(--space-lg);
+}
+
+.brand {
+	font-family: var(--font-ms-headline);
+	font-size: clamp(1.25rem, 3vw, 1.5rem);
+	font-weight: 900;
+	letter-spacing: -0.05em;
+	text-transform: uppercase;
+	color: #fff;
+	transition: color var(--duration-base) var(--ease-out);
+}
+
+.brand:hover {
+	color: var(--ms-primary);
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: var(--space-lg);
+}
+
+.menuBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-xs);
+	color: rgba(255, 255, 255, 0.7);
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color var(--duration-base) var(--ease-out);
+}
+
+.menuBtn:hover {
+	color: #fff;
+}
+
+.menuBtn .materialSymbols {
+	font-size: 1.75rem;
+}

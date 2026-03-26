@@ -1,0 +1,26 @@
+---
+import Container from "../ui/Container.astro";
+import styles from "./Header.module.css";
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const madSessionPath = "/madsession/a-ritmo-cha-cun-cha";
+const isMadSession = pathname === madSessionPath;
+const isHome = pathname === "/";
+---
+
+<header class={styles.bar}>
+	<Container class={styles.inner}>
+		<div class={styles.row}>
+			<a href="/" class={styles.logo} aria-current={isHome ? "page" : undefined}>JONNYMAD</a>
+			<nav class={styles.nav} aria-label="Principal">
+				<a
+					href={madSessionPath}
+					class={styles.link}
+					aria-current={isMadSession ? "page" : undefined}
+				>
+					MAD SESSIONS
+				</a>
+			</nav>
+		</div>
+	</Container>
+</header>

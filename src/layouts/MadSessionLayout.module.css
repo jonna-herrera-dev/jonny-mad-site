@@ -1,0 +1,46 @@
+.html {
+	background-color: var(--ms-bg);
+}
+
+.body {
+	margin: 0;
+	min-height: 100vh;
+	position: relative;
+}
+
+.backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.glowPrimary {
+	position: absolute;
+	top: -10%;
+	left: -10%;
+	width: 60%;
+	height: 60%;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--ms-primary) 20%, transparent);
+	filter: blur(140px);
+}
+
+.glowSecondary {
+	position: absolute;
+	bottom: -10%;
+	right: -10%;
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--ms-secondary) 20%, transparent);
+	filter: blur(120px);
+}
+
+.main {
+	position: relative;
+	z-index: 1;
+	min-height: 100vh;
+	overflow-x: hidden;
+}

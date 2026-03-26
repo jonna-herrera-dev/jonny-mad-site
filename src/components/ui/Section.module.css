@@ -1,0 +1,7 @@
+.root {
+	padding-block: var(--space-2xl);
+}
+
+.root[data-tight="true"] {
+	padding-block: var(--space-xl);
+}

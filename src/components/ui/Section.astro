@@ -1,0 +1,16 @@
+---
+import styles from "./Section.module.css";
+
+interface Props {
+	class?: string;
+	tight?: boolean;
+	/** Etiqueta semántica según el contenido */
+	as?: "section" | "article" | "aside";
+}
+
+const { class: className = "", tight = false, as: Tag = "section" } = Astro.props;
+---
+
+<Tag class:list={[styles.root, className]} data-tight={tight ? "true" : undefined}>
+	<slot />
+</Tag>

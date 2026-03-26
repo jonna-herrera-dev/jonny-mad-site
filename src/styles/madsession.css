@@ -1,0 +1,49 @@
+/**
+ * Tokens y utilidades — landing MAD SESSION (Stitch / Cyber Pop)
+ * Alcance: layout y páginas que importen este archivo.
+ */
+.madSessionRoot {
+	--ms-primary: #f8f82b;
+	--ms-on-primary: #5d5d00;
+	--ms-secondary: #ff51fa;
+	--ms-tertiary: #70d5ff;
+	--ms-bg: #0e0e0e;
+	--ms-on-bg: #ffffff;
+	--ms-surface-high: #262626;
+	--ms-surface-bright: #2c2c2c;
+	--ms-on-surface-variant: #ababab;
+	--ms-outline-variant: #484848;
+	--ms-error: #ff7351;
+	--ms-spotify: #1db954;
+
+	--font-ms-headline: var(--font-sans);
+	--font-ms-body: var(--font-sans);
+
+	--ms-radius-lg: 1rem;
+	--ms-radius-xl: 2rem;
+	--ms-radius-pill: 9999px;
+
+	background-color: var(--ms-bg);
+	color: var(--ms-on-bg);
+	font-family: var(--font-ms-body);
+}
+
+.madSessionRoot ::selection {
+	background-color: var(--ms-primary);
+	color: var(--ms-on-primary);
+}
+
+.madSessionRoot .materialSymbols {
+	font-family: "Material Symbols Outlined", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1.5rem;
+	line-height: 1;
+	display: inline-block;
+	vertical-align: middle;
+	font-variation-settings:
+		"FILL" 0,
+		"wght" 400,
+		"GRAD" 0,
+		"opsz" 24;
+}

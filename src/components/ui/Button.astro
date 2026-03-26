@@ -1,0 +1,32 @@
+---
+import styles from "./Button.module.css";
+
+interface Props {
+	type?: "button" | "submit" | "reset";
+	variant?: "primary" | "secondary" | "ghost";
+	class?: string;
+	disabled?: boolean;
+}
+
+const {
+	type = "button",
+	variant = "primary",
+	class: className = "",
+	disabled = false,
+} = Astro.props;
+
+const variantClass =
+	variant === "secondary"
+		? styles.secondary
+		: variant === "ghost"
+			? styles.ghost
+			: styles.primary;
+---
+
+<button
+	type={type}
+	class:list={[styles.root, variantClass, className]}
+	disabled={disabled}
+>
+	<slot />
+</button>
