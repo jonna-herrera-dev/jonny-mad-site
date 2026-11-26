@@ -57,11 +57,14 @@ import msStyles from "./madsessions/a-ritmo-cha-cun-cha.module.css";
 					<article class={styles.releaseCard}>
 						<div class={styles.cover}>
 							<img
-								src="/assets/images/portada.webp"
+								src="/assets/images/portada-640.webp"
+								srcset="/assets/images/portada-640.webp 640w, /assets/images/portada-960.webp 960w"
+								sizes="(min-width: 48rem) 10.5rem, 9.5rem"
 								alt="Portada MAD SESSIONS #1 — A Ritmo Cha Cun Cha"
-								width="3000"
-								height="3000"
+								width="640"
+								height="640"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 						<div>
@@ -73,7 +76,11 @@ import msStyles from "./madsessions/a-ritmo-cha-cun-cha.module.css";
 							</p>
 						</div>
 						<div class={styles.releaseActions}>
-							<a class={styles.releaseBtn} href="/madsessions/a-ritmo-cha-cun-cha">
+							<a
+								class={styles.releaseBtn}
+								href="/madsessions/a-ritmo-cha-cun-cha"
+								data-astro-prefetch="viewport"
+							>
 								Escuchar MAD Sessions #1
 							</a>
 						</div>
@@ -82,11 +89,14 @@ import msStyles from "./madsessions/a-ritmo-cha-cun-cha.module.css";
 					<article class={`${styles.releaseCard} ${styles.releaseCardAlt}`}>
 						<div class={styles.cover}>
 							<img
-								src="/assets/images/portada-gangsters-modernos.webp"
+								src="/assets/images/portada-gangsters-640.webp"
+								srcset="/assets/images/portada-gangsters-640.webp 640w, /assets/images/portada-gangsters-960.webp 960w"
+								sizes="(min-width: 48rem) 10.5rem, 9.5rem"
 								alt="Portada MAD SESSIONS #2 — Gangsters Modernos"
-								width="1024"
-								height="1024"
+								width="640"
+								height="640"
 								loading="lazy"
+								decoding="async"
 							/>
 						</div>
 						<div>
@@ -103,6 +113,7 @@ import msStyles from "./madsessions/a-ritmo-cha-cun-cha.module.css";
 							<a
 								class={`${styles.releaseBtn} ${styles.releaseBtnAlt}`}
 								href="/madsessions/gangsters-modernos"
+								data-astro-prefetch="viewport"
 							>
 								Escuchar MAD Sessions #2
 							</a>

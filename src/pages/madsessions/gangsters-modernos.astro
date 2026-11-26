@@ -21,11 +21,15 @@ const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
 		<div class={styles.logoBlock}>
 			<div class={styles.logoRing}>
 				<img
-					src="/assets/images/jonnymad-logo.jpg"
+					src="/assets/images/jonnymad-logo-160.webp"
+					srcset="/assets/images/jonnymad-logo-160.webp 160w, /assets/images/jonnymad-logo-256.webp 256w"
+					sizes="(min-width: 48rem) 5rem, 3.75rem"
 					alt="JONNY MAD"
-					width="1080"
-					height="1080"
+					width="256"
+					height="256"
 					loading="eager"
+					decoding="async"
+					fetchpriority="high"
 				/>
 			</div>
 			<span class={styles.kicker}>Madhouse Riddim Lab Presents</span>
@@ -35,12 +39,15 @@ const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
 			<div class={styles.coverGlow} aria-hidden="true"></div>
 			<div class={styles.coverInner}>
 				<img
-					src="/assets/images/portada-gangsters-modernos.webp"
-					alt="MAD SESSIONS #2 — Gangsters Modernos"
-					width="1024"
-					height="1024"
+					src="/assets/images/portada-gangsters-640.webp"
+					srcset="/assets/images/portada-gangsters-640.webp 640w, /assets/images/portada-gangsters-960.webp 960w"
 					sizes="(min-width: 64rem) 17rem, (min-width: 48rem) 13rem, min(62vw, 10rem)"
+					alt="MAD SESSIONS #2 — Gangsters Modernos"
+					width="960"
+					height="960"
 					loading="eager"
+					decoding="async"
+					fetchpriority="high"
 				/>
 			</div>
 		</div>
@@ -80,7 +87,7 @@ const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
 					id="listen-audio"
 					class={styles.listenAudio}
 					controls
-					preload="metadata"
+					preload="none"
 					src={audioSrc}
 				>
 					Tu navegador no reproduce audio embebido.
@@ -107,7 +114,9 @@ const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
 			const closeBtn = document.getElementById("listen-dialog-close");
 			const audio = document.getElementById("listen-audio");
 
-			if (!trigger || !dialog || !audio) return;
+			if (!(trigger instanceof HTMLElement)) return;
+			if (!(dialog instanceof HTMLDialogElement)) return;
+			if (!(audio instanceof HTMLAudioElement)) return;
 
 			function pauseAndReset() {
 				audio.pause();
@@ -116,6 +125,7 @@ const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
 
 			trigger.addEventListener("click", () => {
 				dialog.showModal();
+				if (audio.readyState < 2) audio.load();
 				audio.play().catch(() => {});
 			});
 
