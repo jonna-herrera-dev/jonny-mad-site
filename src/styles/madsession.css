@@ -2,7 +2,8 @@
  * Tokens y utilidades — landing MAD SESSION (Stitch / Cyber Pop)
  * Alcance: layout y páginas que importen este archivo.
  */
-.madSessionRoot {
+.madSessionRoot,
+.madSessionTokens {
 	--ms-primary: #f8f82b;
 	--ms-on-primary: #5d5d00;
 	--ms-secondary: #ff51fa;
@@ -22,7 +23,9 @@
 	--ms-radius-lg: 1rem;
 	--ms-radius-xl: 2rem;
 	--ms-radius-pill: 9999px;
+}
 
+.madSessionRoot {
 	background-color: var(--ms-bg);
 	color: var(--ms-on-bg);
 	font-family: var(--font-ms-body);

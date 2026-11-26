@@ -3,8 +3,8 @@ import Container from "../ui/Container.astro";
 import styles from "./Header.module.css";
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
-const madSessionPath = "/madsession/a-ritmo-cha-cun-cha";
-const isMadSession = pathname === madSessionPath;
+const madSessionsHref = "/#releases";
+const isMadSession = pathname.startsWith("/madsessions");
 const isHome = pathname === "/";
 ---
 
@@ -14,7 +14,7 @@ const isHome = pathname === "/";
 			<a href="/" class={styles.logo} aria-current={isHome ? "page" : undefined}>JONNYMAD</a>
 			<nav class={styles.nav} aria-label="Principal">
 				<a
-					href={madSessionPath}
+					href={madSessionsHref}
 					class={styles.link}
 					aria-current={isMadSession ? "page" : undefined}
 				>

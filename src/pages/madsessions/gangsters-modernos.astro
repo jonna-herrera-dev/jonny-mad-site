@@ -1,0 +1,135 @@
+---
+/**
+ * MAD SESSION — Gangsters Modernos
+ * Ruta: /madsessions/gangsters-modernos
+ */
+import MadSessionLayout from "../../layouts/MadSessionLayout.astro";
+import PlatformLinks from "../../components/madsession/PlatformLinks.astro";
+import { streamingLinksGangsters } from "../../data/streamingLinks";
+import styles from "./a-ritmo-cha-cun-cha.module.css";
+
+const audioFilename = "Gangsters-MSR-(320K).mp3";
+const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
+---
+
+<MadSessionLayout
+	title="JONNY MAD | MAD SESSIONS #2 — Gangsters Modernos"
+	description="MAD SESSIONS #2 — Gangsters Modernos. JONNY MAD feat. Santi Luna (The Endurance)."
+	lang="en"
+>
+	<section class={styles.hero} aria-labelledby="session-title">
+		<div class={styles.logoBlock}>
+			<div class={styles.logoRing}>
+				<img
+					src="/assets/images/jonnymad-logo.jpg"
+					alt="JONNY MAD"
+					width="1080"
+					height="1080"
+					loading="eager"
+				/>
+			</div>
+			<span class={styles.kicker}>Madhouse Riddim Lab Presents</span>
+		</div>
+
+		<div class={styles.coverWrap}>
+			<div class={styles.coverGlow} aria-hidden="true"></div>
+			<div class={styles.coverInner}>
+				<img
+					src="/assets/images/portada-gangsters-modernos.webp"
+					alt="MAD SESSIONS #2 — Gangsters Modernos"
+					width="1024"
+					height="1024"
+					sizes="(min-width: 64rem) 17rem, (min-width: 48rem) 13rem, min(62vw, 10rem)"
+					loading="eager"
+				/>
+			</div>
+		</div>
+
+		<!-- <div class={styles.copyBlock}>
+			<h1 id="session-title" class={styles.title}>
+				MAD SESSIONS <span class={styles.titleAccent}>#2</span>
+			</h1>
+			<h2 class={styles.subtitle}>
+				JONNY MAD <span class={styles.feat}>FEAT. SANTI LUNA & THE ENDURANCE</span>
+			</h2>
+		</div> -->
+
+		<div class={styles.ctaBlock}>
+			<button type="button" class={styles.cta} id="listen-cta">
+				Listen now
+			</button>
+			<div class={styles.streamRow}>
+				<span class={styles.ping} aria-hidden="true"></span>
+				<span class={styles.streamLabel}>Streaming worldwide</span>
+			</div>
+		</div>
+
+		<dialog class={styles.listenDialog} id="listen-dialog" aria-labelledby="listen-dialog-title">
+			<div class={styles.listenPanel}>
+				<button
+					type="button"
+					class={styles.listenClose}
+					id="listen-dialog-close"
+					aria-label="Cerrar reproductor"
+				>
+					×
+				</button>
+				<h2 id="listen-dialog-title" class={styles.listenTitle}>MAD SESSIONS #2</h2>
+				<p class={styles.listenMeta}>Gangsters Modernos</p>
+				<audio
+					id="listen-audio"
+					class={styles.listenAudio}
+					controls
+					preload="metadata"
+					src={audioSrc}
+				>
+					Tu navegador no reproduce audio embebido.
+				</audio>
+			</div>
+		</dialog>
+	</section>
+
+	<PlatformLinks links={streamingLinksGangsters} />
+
+	<div class={styles.deco} aria-hidden="true">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<script>
+		function initListenModal() {
+			const trigger = document.getElementById("listen-cta");
+			const dialog = document.getElementById("listen-dialog");
+			const closeBtn = document.getElementById("listen-dialog-close");
+			const audio = document.getElementById("listen-audio");
+
+			if (!trigger || !dialog || !audio) return;
+
+			function pauseAndReset() {
+				audio.pause();
+				audio.currentTime = 0;
+			}
+
+			trigger.addEventListener("click", () => {
+				dialog.showModal();
+				audio.play().catch(() => {});
+			});
+
+			closeBtn?.addEventListener("click", () => {
+				dialog.close();
+			});
+
+			dialog.addEventListener("close", pauseAndReset);
+
+			dialog.addEventListener("click", (e) => {
+				if (e.target === dialog) dialog.close();
+			});
+		}
+
+		initListenModal();
+	</script>
+</MadSessionLayout>

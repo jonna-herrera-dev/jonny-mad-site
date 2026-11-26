@@ -1,12 +1,35 @@
 ---
-import styles from "../../pages/madsession/a-ritmo-cha-cun-cha.module.css";
-import { streamingLinks } from "../../data/streamingLinks";
+import styles from "../../pages/madsessions/a-ritmo-cha-cun-cha.module.css";
+import {
+	streamingLinksChaCunCha,
+	type StreamingLinksMap,
+} from "../../data/streamingLinks";
 
-const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
+interface Props {
+	links?: StreamingLinksMap;
+	/** Oculta el título “Select your platform” (p. ej. home con su propio header). */
+	showTitle?: boolean;
+}
+
+const { links = streamingLinksChaCunCha, showTitle = true } = Astro.props;
+const { spotify, apple, tidal, youtube, amazon } = links;
+const sectionClass = showTitle
+	? styles.platforms
+	: `${styles.platforms} ${styles.platformsEmbedded}`;
 ---
 
-<section class={styles.platforms} aria-labelledby="platforms-heading">
-	<h3 id="platforms-heading" class={styles.platformsTitle}>Select your platform</h3>
+<section
+	class={sectionClass}
+	aria-labelledby={showTitle ? "platforms-heading" : undefined}
+	aria-label={showTitle ? undefined : "Plataformas de streaming"}
+>
+	{
+		showTitle && (
+			<h3 id="platforms-heading" class={styles.platformsTitle}>
+				Select your platform
+			</h3>
+		)
+	}
 	<div class={styles.platformGrid} data-streaming-grid>
 		<a
 			class={styles.platformCard}
@@ -15,7 +38,7 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			rel="noopener noreferrer"
 			data-platform="spotify"
 			data-web-href={spotify.web}
-			data-app-href={spotify.app}
+			data-app-href={spotify.app ?? undefined}
 		>
 			<div class={styles.platformIcon}>
 				<img
@@ -35,7 +58,7 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			rel="noopener noreferrer"
 			data-platform="apple"
 			data-web-href={apple.web}
-			data-app-href={apple.app}
+			data-app-href={apple.app ?? undefined}
 		>
 			<div class={styles.platformIcon}>
 				<img
@@ -55,7 +78,7 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			rel="noopener noreferrer"
 			data-platform="tidal"
 			data-web-href={tidal.web}
-			data-app-href={tidal.app}
+			data-app-href={tidal.app ?? undefined}
 		>
 			<div class={styles.platformIcon}>
 				<img
@@ -75,7 +98,7 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			rel="noopener noreferrer"
 			data-platform="youtube"
 			data-web-href={youtube.web}
-			data-app-href={youtube.app}
+			data-app-href={youtube.app ?? undefined}
 		>
 			<div class={styles.platformIcon}>
 				<img
@@ -95,6 +118,7 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			rel="noopener noreferrer"
 			data-platform="amazon"
 			data-web-href={amazon.web}
+			data-app-href={amazon.app ?? undefined}
 		>
 			<div class={styles.platformIcon}>
 				<img
@@ -130,8 +154,13 @@ const { spotify, apple, tidal, youtube, amazon } = streamingLinks;
 			}
 
 			a.href = web;
-			a.target = "_blank";
-			a.rel = "noopener noreferrer";
+			if (web.startsWith("http")) {
+				a.target = "_blank";
+				a.rel = "noopener noreferrer";
+			} else {
+				a.removeAttribute("target");
+				a.removeAttribute("rel");
+			}
 		});
 	}
 

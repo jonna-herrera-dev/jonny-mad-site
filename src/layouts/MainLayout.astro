@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.css";
 import Header from "../components/layout/Header.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
 import HeadIdentity from "../components/HeadIdentity.astro";
 
 interface Props {
@@ -31,5 +32,6 @@ const {
 		<main id="main-content">
 			<slot />
 		</main>
+		<SiteFooter />
 	</body>
 </html>

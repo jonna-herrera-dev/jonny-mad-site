@@ -1,135 +1,134 @@
 ---
 /**
- * Home temporal: mismo contenido que /madsession/a-ritmo-cha-cun-cha
- * Restaurar MainLayout + index.module cuando el home definitivo esté listo.
+ * Home — JONNYMAD
+ * Hero + MAD Sessions releases + ecosistema de plataformas
  */
-import MadSessionLayout from "../layouts/MadSessionLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
 import PlatformLinks from "../components/madsession/PlatformLinks.astro";
-import styles from "./madsession/a-ritmo-cha-cun-cha.module.css";
-
-const audioFilename = "Cha Cun Cha-MSR-(320K).mp3";
-const audioSrc = `/assets/audio/${encodeURIComponent(audioFilename)}`;
+import { streamingLinksChaCunCha } from "../data/streamingLinks";
+import "../styles/madsession.css";
+import styles from "./index.module.css";
 ---
 
-<MadSessionLayout
-	title="JONNY MAD | MAD SESSIONS #1"
-	description="MAD SESSIONS #1 — JONNY MAD feat. Subcantante. Cyber Pop underground."
-	lang="en"
-	showHeader={false}
+<MainLayout
+	title="JONNYMAD | Madhouse Riddim Lab"
+	description="Sitio oficial de JONNYMAD — MAD Sessions, Cyber Pop underground y Madhouse Riddim Lab."
+	lang="es"
 >
-	<section class={styles.hero} aria-labelledby="session-title">
-		<div class={styles.logoBlock}>
-			<div class={styles.logoRing}>
-				<img
-					src="/assets/images/jonnymad-logo.jpg"
-					alt="JONNY MAD"
-					width="1080"
-					height="1080"
-					loading="eager"
-				/>
-			</div>
-			<span class={styles.kicker}>Madhouse Riddim Lab Presents</span>
-		</div>
+	<div class={styles.page}>
+		<section class={styles.hero} aria-labelledby="home-brand">
+			<h1 id="home-brand" class={styles.brand}>TOO RUDE TO FOLLOW. <br> TOO MAD TO STOP.</h1>
+			<p class={styles.tagline}>
+				Desde las raíces jamaicanas hasta las calles de Bogotá, JonnyMad mezcla sonidos, épocas y culturas con espíritu rebelde y actitud rude boy.
 
-		<div class={styles.coverWrap}>
-			<div class={styles.coverGlow} aria-hidden="true"></div>
-			<div class={styles.coverInner}>
-				<img
-					src="/assets/images/portada.webp"
-					alt="MAD SESSIONS #1 — A ritmo cha-cun-cha"
-					width="3000"
-					height="3000"
-					sizes="(min-width: 64rem) 17rem, (min-width: 48rem) 13rem, min(62vw, 10rem)"
-					loading="eager"
-				/>
-			</div>
-		</div>
 
-		<!-- <div class={styles.copyBlock}>
-			<h1 id="session-title" class={styles.title}>
-				MAD SESSIONS <span class={styles.titleAccent}>#1</span>
-			</h1>
-			<h2 class={styles.subtitle}>
-				JONNY MAD <span class={styles.feat}>FEAT. SUBCANTANTE</span>
-			</h2>
-		</div> -->
+			</p>
+			<figure class={styles.figure}>
+				<div class={styles.frame}>
+					<div class={styles.photo}>
+						<img
+							src="/assets/images/hero-home.webp"
+							alt="JONNYMAD"
+							width="790"
+							height="730"
+							loading="eager"
+						/>
+						<div class={styles.overlay} aria-hidden="true"></div>
+					</div>
+				</div>
+			</figure>
+		</section>
 
-		<div class={styles.ctaBlock}>
-			<button type="button" class={styles.cta} id="listen-cta">
-				Listen now
-			</button>
-			<div class={styles.streamRow}>
-				<span class={styles.ping} aria-hidden="true"></span>
-				<span class={styles.streamLabel}>Streaming worldwide</span>
-			</div>
-		</div>
+		<section class={styles.section} id="releases" aria-labelledby="releases-title">
+			<Container class={styles.sectionInner}>
+				<header class={styles.sectionHead}>
+					<div>
+						<span class={styles.eyebrow}>◎ Catalog showcase</span>
+						<h2 id="releases-title" class={styles.sectionTitle}>MAD Sessions Releases</h2>
+					</div>
+					<p class={styles.sectionLead}>
+						No son simples covers. Son encuentros, reinterpretaciones y nuevas formas de entender canciones que nos gustan.
+					</p>
+				</header>
 
-		<dialog class={styles.listenDialog} id="listen-dialog" aria-labelledby="listen-dialog-title">
-			<div class={styles.listenPanel}>
-				<button
-					type="button"
-					class={styles.listenClose}
-					id="listen-dialog-close"
-					aria-label="Cerrar reproductor"
-				>
-					×
-				</button>
-				<h2 id="listen-dialog-title" class={styles.listenTitle}>MAD SESSIONS #1</h2>
-				<p class={styles.listenMeta}>A ritmo cha cun cha</p>
-				<audio
-					id="listen-audio"
-					class={styles.listenAudio}
-					controls
-					preload="metadata"
-					src={audioSrc}
-				>
-					Tu navegador no reproduce audio embebido.
-				</audio>
-			</div>
-		</dialog>
-	</section>
+				<div class={styles.releaseGrid}>
+					<article class={styles.releaseCard}>
+						<div class={styles.cover}>
+							<img
+								src="/assets/images/portada.webp"
+								alt="Portada MAD SESSIONS #1 — A Ritmo Cha Cun Cha"
+								width="3000"
+								height="3000"
+								loading="lazy"
+							/>
+						</div>
+						<div>
+							<h3 class={styles.releaseTitle}>MAD Sessions #1</h3>
+							<p class={styles.releaseTrack}>A Ritmo Cha Cun Cha feat. Subcantante</p>
+							<p class={styles.releaseCopy}>
+								Una dosis de sabor, ritmo y espíritu caribeño en la capital. Una nueva
+								versión, una descarga de actitud y el primer golpe de esta serie.
+							</p>
+						</div>
+						<div class={styles.releaseActions}>
+							<a class={styles.releaseBtn} href="/madsessions/a-ritmo-cha-cun-cha">
+								Escuchar MAD Sessions #1
+							</a>
+						</div>
+					</article>
 
-	<PlatformLinks />
+					<article class={`${styles.releaseCard} ${styles.releaseCardAlt}`}>
+						<div class={styles.cover}>
+							<img
+								src="/assets/images/portada-gangsters-modernos.webp"
+								alt="Portada MAD SESSIONS #2 — Gangsters Modernos"
+								width="1024"
+								height="1024"
+								loading="lazy"
+							/>
+						</div>
+						<div>
+							<h3 class={styles.releaseTitle}>MAD Sessions #2</h3>
+							<p class={`${styles.releaseTrack} ${styles.releaseTrackAlt}`}>
+								Gangsters Modernos feat. Santi Luna
+							</p>
+							<p class={styles.releaseCopy}>
+								Un guiño a la vieja escuela y una descarga de espíritu 2Tone. Un homenaje
+								a Los Intocables, hecho desde nuestra propia esquina.
+							</p>
+						</div>
+						<div class={styles.releaseActions}>
+							<a
+								class={`${styles.releaseBtn} ${styles.releaseBtnAlt}`}
+								href="/madsessions/gangsters-modernos"
+							>
+								Escuchar MAD Sessions #2
+							</a>
+						</div>
+					</article>
+				</div>
+			</Container>
+		</section>
 
-	<div class={styles.deco} aria-hidden="true">
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
+		<section class={styles.section} id="platforms" aria-labelledby="platforms-title">
+			<Container class={styles.sectionInner}>
+				<header class={styles.sectionHead}>
+					<div>
+						<span class={styles.eyebrow}>Ecosistema digital</span>
+						<h2 id="platforms-title" class={styles.sectionTitle}>
+							TAKE THE MADNESS EVERYWHERE
+						</h2>
+					</div>
+					<p class={styles.sectionLead}>
+						Nuestra música está donde tú estás. Encuentra a JonnyMad, escucha los lanzamientos y lleva estos ritmos contigo.
+					</p>
+				</header>
+
+				<div class="madSessionTokens">
+					<PlatformLinks links={streamingLinksChaCunCha} showTitle={false} />
+				</div>
+			</Container>
+		</section>
 	</div>
-
-	<script>
-		function initListenModal() {
-			const trigger = document.getElementById("listen-cta");
-			const dialog = document.getElementById("listen-dialog");
-			const closeBtn = document.getElementById("listen-dialog-close");
-			const audio = document.getElementById("listen-audio");
-
-			if (!trigger || !dialog || !audio) return;
-
-			function pauseAndReset() {
-				audio.pause();
-				audio.currentTime = 0;
-			}
-
-			trigger.addEventListener("click", () => {
-				dialog.showModal();
-				audio.play().catch(() => {});
-			});
-
-			closeBtn?.addEventListener("click", () => {
-				dialog.close();
-			});
-
-			dialog.addEventListener("close", pauseAndReset);
-
-			dialog.addEventListener("click", (e) => {
-				if (e.target === dialog) dialog.close();
-			});
-		}
-
-		initListenModal();
-	</script>
-</MadSessionLayout>
+</MainLayout>

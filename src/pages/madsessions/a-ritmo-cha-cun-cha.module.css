@@ -383,6 +383,14 @@
 	}
 }
 
+/* Home u otros layouts con header propio */
+.platformsEmbedded {
+	padding: 0;
+	max-width: none;
+	margin-inline: 0;
+	width: 100%;
+}
+
 .platformsTitle {
 	margin: 0 0 1.25rem;
 	font-family: var(--font-ms-headline);
