@@ -88,6 +88,12 @@
 	inset: 0;
 	background-color: rgba(0, 0, 0, 0.28);
 	pointer-events: none;
+	opacity: 1;
+	transition: opacity 450ms var(--ease-out, ease-out);
+}
+
+.figure:hover .overlay {
+	opacity: 0;
 }
 
 /* Shared section shell */
@@ -281,5 +287,13 @@
 .releaseBtnAlt {
 	background-color: var(--color-secondary);
 	color: var(--color-white);
+}
+
+/* Visualizer bajo plataformas: separación + aire para el bounce */
+.platformDeco {
+	margin-top: var(--space-xl);
+	margin-bottom: var(--space-md);
+	padding-top: 1rem;
+	box-sizing: content-box;
 }
 

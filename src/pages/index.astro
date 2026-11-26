@@ -6,9 +6,10 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/ui/Container.astro";
 import PlatformLinks from "../components/madsession/PlatformLinks.astro";
-import { streamingLinksChaCunCha } from "../data/streamingLinks";
+import { streamingLinksGangsters } from "../data/streamingLinks";
 import "../styles/madsession.css";
 import styles from "./index.module.css";
+import msStyles from "./madsessions/a-ritmo-cha-cun-cha.module.css";
 ---
 
 <MainLayout
@@ -126,7 +127,15 @@ import styles from "./index.module.css";
 				</header>
 
 				<div class="madSessionTokens">
-					<PlatformLinks links={streamingLinksChaCunCha} showTitle={false} />
+					<PlatformLinks links={streamingLinksGangsters} showTitle={false} />
+					<div class={`${msStyles.deco} ${styles.platformDeco}`} aria-hidden="true">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
 				</div>
 			</Container>
 		</section>
